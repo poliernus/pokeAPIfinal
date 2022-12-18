@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">pokeAPIfinal</string>
+    <string name="buttonPokedex">Pokedex</string>
+    <string name="buttonRegions">Regions</string>
+    <string name="buttonTypes">Types</string>
+    <string name="buttonGenerations">Generations</string>
+
+
+
 </resources>
