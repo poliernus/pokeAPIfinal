@@ -27,13 +27,13 @@
         app:srcCompat="@drawable/menu_svgrepo_com" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonPokedex"
+        android:id="@+id/buttonSignIn"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="133dp"
         android:layout_height="58dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="408dp"
-        android:background="@drawable/custombutton"
+        android:layout_marginTop="475dp"
+        android:background="@drawable/custombuttonmain"
         android:text="@string/buttonPokedex"
         android:textAllCaps="true"
         android:textColor="@color/black"
@@ -41,8 +41,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/black"
-        app:strokeWidth="2dp" />
+         />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonTypes"
@@ -50,16 +49,15 @@
         android:layout_width="133dp"
         android:layout_height="58dp"
         android:layout_marginTop="25dp"
-        android:background="@drawable/custombutton"
+        android:background="@drawable/custombuttonmain"
         android:text="@string/buttonTypes"
         android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/buttonPokedex"
-        app:layout_constraintTop_toBottomOf="@+id/buttonPokedex"
-        app:strokeColor="@color/black"
-        app:strokeWidth="2dp" />
+        app:layout_constraintStart_toStartOf="@+id/buttonSignIn"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSignIn"
+         />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonGenerations"
@@ -68,7 +66,7 @@
         android:layout_height="58dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="50dp"
-        android:background="@drawable/custombutton"
+        android:background="@drawable/custombuttonmain"
         android:text="@string/buttonGenerations"
         android:textAllCaps="true"
         android:textColor="@color/black"
@@ -77,8 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonTypes"
         app:layout_constraintTop_toTopOf="@+id/buttonTypes"
-        app:strokeColor="@color/black"
-        app:strokeWidth="2dp" />
+         />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonRegions"
@@ -87,16 +84,15 @@
         android:layout_height="58dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="50dp"
-        android:background="@drawable/custombutton"
+        android:background="@drawable/custombuttonmain"
         android:text="@string/buttonRegions"
         android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonPokedex"
-        app:layout_constraintTop_toTopOf="@+id/buttonPokedex"
-        app:strokeColor="@color/black"
-        app:strokeWidth="2dp" />
+        app:layout_constraintStart_toEndOf="@+id/buttonSignIn"
+        app:layout_constraintTop_toTopOf="@+id/buttonSignIn"
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

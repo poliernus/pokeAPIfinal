@@ -5,6 +5,12 @@
     <string name="buttonTypes">Types</string>
     <string name="buttonGenerations">Generations</string>
 
+    <string name="buttonSignIn">Sign In</string>
+    <string name="accountText">Don \'t have an account?</string>
+    <string name="createAccount">Create one.</string>
 
+    <string name="buttonCreate">Create Account</string>
+    <string name="accountAlreadyText">Already have an account?</string>
+    <string name="signInAccount">Sign In</string>
 
 </resources>
