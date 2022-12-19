@@ -80,6 +80,8 @@ public class activityRegister extends AppCompatActivity {
         editor.apply();
         editor.putString("my_password", password);
         editor.apply();
+        Toast.makeText(activityRegister.this,"Account created!", Toast.LENGTH_LONG).show();
+
 
     }
 
