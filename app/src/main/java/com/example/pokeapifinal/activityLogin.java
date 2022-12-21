@@ -24,9 +24,7 @@ public class activityLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+
 
 
         TextView createAccount = findViewById(R.id.textViewCreateAccount);
@@ -50,6 +48,13 @@ public class activityLogin extends AppCompatActivity {
                 }else{
                     Toast.makeText(activityLogin.this, "The name or password are wrong!!", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+        ImageView imageViewArrow = findViewById(R.id.imageViewArrow2);
+        imageViewArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivityMain();
             }
         });
     }

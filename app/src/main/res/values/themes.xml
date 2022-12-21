@@ -11,6 +11,14 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowNoTitle">true</item>
+        
         <!-- Customize your theme here. -->
     </style>
+    <style name="Theme.PokeAPIfinal.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.PokeAPIfinal.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.PokeAPIfinal.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
