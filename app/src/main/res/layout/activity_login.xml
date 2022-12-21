@@ -7,6 +7,17 @@
     tools:context=".activityLogin">
 
     <ImageView
+        android:id="@+id/imageViewArrow2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:rotation="-90"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/up_arrow_svgrepo_com" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="251dp"
         android:layout_height="247dp"
