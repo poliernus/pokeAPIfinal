@@ -2,6 +2,7 @@ package com.example.pokeapifinal;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHold
         Pokemon pokemon = data.get(position);
         holder.txtPoke.setText(pokemon.getName());
 
-        holder.numPoke.setText("Pokemon ID: "+String.valueOf(pokemon.getNumber()));
+        holder.numPoke.setText("Pokemon ID: "+ String.valueOf(pokemon.getNumber()));
 
         Glide.with(context)
                 .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + pokemon.getNumber() + ".png")
@@ -50,8 +51,14 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHold
 
         holder.pokemonClickListener(new PokemonClickListener() {
             @Override
-            public void onClick(View view, int id) {
-                Toast.makeText(context,data.get(id).getName(),Toast.LENGTH_LONG);
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(view.getContext(),PokemonTakeDetail.class);
+                intent.putExtra("urlPokemon",data.get(position).getUrl());
+                intent.putExtra("idPokemon",data.get(position).getNumber());
+                intent.putExtra("namePokemon",data.get(position).getName());
+
+                view.getContext().startActivity(intent);
+
             }
         });
     }
@@ -87,14 +94,12 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHold
 
         @Override
         public void onClick(View view) {
-            pokemonClickListener.onClick(view,getAdapterPosition());
+            pokemonClickListener.onClick(view,getAdapterPosition()
+            );
         }
 
         public void pokemonClickListener(PokemonClickListener pokemonClickListener) {
             this.pokemonClickListener = pokemonClickListener;
-
-            numPoke = (TextView) itemView.findViewById(R.id.numPokemon);
-
         }
     }
 }
