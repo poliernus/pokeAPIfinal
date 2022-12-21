@@ -102,4 +102,6 @@ public class PokedexActivity extends AppCompatActivity
             });
         }
 
+
+
 }
