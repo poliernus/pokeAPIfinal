@@ -55,6 +55,8 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHold
                 Intent intent = new Intent(view.getContext(),PokemonTakeDetail.class);
                 intent.putExtra("urlPokemon",data.get(position).getUrl());
                 intent.putExtra("idPokemon",data.get(position).getNumber());
+                System.out.println(data.get(position).getNumber());
+                System.out.println(data.get(position).getUrl());
                 intent.putExtra("namePokemon",data.get(position).getName());
 
                 view.getContext().startActivity(intent);

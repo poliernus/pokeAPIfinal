@@ -14,10 +14,10 @@ public class Pokemon {
         this.name = name;
     }
 
-    public int getNumber()
+    public String getNumber()
     {
         String[] urlPartes = url.split("/");
-        return Integer.parseInt(urlPartes[urlPartes.length - 1]);
+        return urlPartes[urlPartes.length - 1 ];
     }
 
     public String getUrl()
