@@ -43,6 +43,8 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHold
         Pokemon pokemon = data.get(position);
         holder.txtPoke.setText(pokemon.getName());
 
+        holder.numPoke.setText("Pokemon ID: "+String.valueOf(pokemon.getNumber()));
+
         Glide.with(context)
                 .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+ pokemon.getNumber()+".png")
                 .into(holder.imgPoke);
@@ -65,12 +67,14 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHold
 
         private ImageView imgPoke;
         private TextView txtPoke;
+        private TextView numPoke;
 
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
             imgPoke = (ImageView) itemView.findViewById(R.id.imagenPokemon);
             txtPoke = (TextView) itemView.findViewById(R.id.nombrePokemon);
+            numPoke = (TextView) itemView.findViewById(R.id.numPokemon);
         }
     }
 }
