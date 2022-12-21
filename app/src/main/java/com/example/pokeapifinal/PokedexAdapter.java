@@ -42,6 +42,8 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHold
         Pokemon pokemon = data.get(position);
         holder.txtPoke.setText(pokemon.getName());
 
+        holder.numPoke.setText("Pokemon ID: "+String.valueOf(pokemon.getNumber()));
+
         Glide.with(context)
                 .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + pokemon.getNumber() + ".png")
                 .into(holder.imgPoke);
@@ -49,7 +51,7 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHold
         holder.pokemonClickListener(new PokemonClickListener() {
             @Override
             public void onClick(View view, int id) {
-                Toast.makeText(context,data.get(position).getName(),Toast.LENGTH_LONG);
+                Toast.makeText(context,data.get(id).getName(),Toast.LENGTH_LONG);
             }
         });
     }
@@ -68,6 +70,7 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHold
 
         private ImageView imgPoke;
         private TextView txtPoke;
+        private TextView numPoke;
 
         PokemonClickListener pokemonClickListener;
 
@@ -75,6 +78,7 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHold
             super(itemView);
             imgPoke = (ImageView) itemView.findViewById(R.id.imagenPokemon);
             txtPoke = (TextView) itemView.findViewById(R.id.nombrePokemon);
+
 
             itemView.setOnClickListener(this);
         }
@@ -87,6 +91,9 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHold
 
         public void pokemonClickListener(PokemonClickListener pokemonClickListener) {
             this.pokemonClickListener = pokemonClickListener;
+
+            numPoke = (TextView) itemView.findViewById(R.id.numPokemon);
+
         }
     }
 }

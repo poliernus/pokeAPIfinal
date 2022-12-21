@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,15 +27,12 @@ public class activityRegister extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activityRegister.this);
 
-
-        ImageView arrowBack = findViewById(R.id.imageBackArrowRegister);
-        arrowBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openActivityLogin();}
-        });
 
         Button buttonCreate = findViewById(R.id.buttonSignIn);
         buttonCreate.setOnClickListener(new View.OnClickListener() {
@@ -62,13 +61,6 @@ public class activityRegister extends AppCompatActivity {
         });
 
 
-        ImageView menu = findViewById(R.id.imageMenuRegister);
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
     }
 
