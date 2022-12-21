@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openActivityLogin();
+                openActivityPokedex();
             }
         });
         ImageView pokeball = findViewById(R.id.imageViewPokeball);
@@ -34,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    public void openActivityPokedex(){
+        Intent intent = new Intent(this, PokedexActivity.class);
+        startActivity(intent);
+    }
+
     public void openActivityLogin(){
         Intent intent = new Intent(this, activityLogin.class);
         startActivity(intent);
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     public int getImage(String imageName) {
 
         int drawableResourceId = this.getResources().getIdentifier(imageName, "drawable", this.getPackageName());
-        Toast.makeText(this, "Image couldn't been load!!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Image couldn't been load!!", Toast.LENGTH_LONG-1).show();
         return drawableResourceId;
 
     }
