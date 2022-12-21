@@ -78,6 +78,7 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHold
             super(itemView);
             imgPoke = (ImageView) itemView.findViewById(R.id.imagenPokemon);
             txtPoke = (TextView) itemView.findViewById(R.id.nombrePokemon);
+            numPoke = (TextView) itemView.findViewById(R.id.numPokemon);
 
 
             itemView.setOnClickListener(this);
