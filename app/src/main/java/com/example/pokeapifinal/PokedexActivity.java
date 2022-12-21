@@ -1,7 +1,8 @@
 package com.example.pokeapifinal;
 
 import android.os.Bundle;
-import android.telecom.*;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.pokeapifinal.api.PokedexApi;
 import com.example.pokeapifinal.models.Pokemon;
 import com.example.pokeapifinal.models.PokemonRespuesta;
-import com.example.pokeapifinal.api.*;
-import com.example.pokeapifinal.models.*;
+
 
 import java.util.ArrayList;
 
@@ -34,8 +34,11 @@ public class PokedexActivity extends AppCompatActivity
         protected void onCreate(Bundle savedInstanceState)
         {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.pokedex_activity);
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            getSupportActionBar().hide();
 
+            setContentView(R.layout.pokedex_activity);
             recyclerView = findViewById(R.id.recyclerView);
             pokedexAdapter = new PokedexAdapter(this);
             recyclerView.setAdapter(pokedexAdapter);
