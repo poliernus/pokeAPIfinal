@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
     public int getImage(String imageName) {
 
         int drawableResourceId = this.getResources().getIdentifier(imageName, "drawable", this.getPackageName());
-        Toast.makeText(this, "Image couldn't been load!!", Toast.LENGTH_LONG-1).show();
         return drawableResourceId;
 
     }
