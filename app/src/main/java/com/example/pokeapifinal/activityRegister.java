@@ -35,7 +35,7 @@ public class activityRegister extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activityRegister.this);
 
 
-        Button buttonCreate = findViewById(R.id.buttonSignIn);
+        Button buttonCreate = findViewById(R.id.button3);
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,13 +60,6 @@ public class activityRegister extends AppCompatActivity {
         textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {openActivityLogin();}
-        });
-        ImageView imageViewArrow = findViewById(R.id.imageViewArrow);
-        imageViewArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openActivityMain();
-            }
         });
 
 

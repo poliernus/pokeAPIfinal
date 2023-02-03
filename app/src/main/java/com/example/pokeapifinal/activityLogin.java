@@ -50,13 +50,7 @@ public class activityLogin extends AppCompatActivity {
                 }
             }
         });
-        ImageView imageViewArrow = findViewById(R.id.imageViewArrow2);
-        imageViewArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openActivityMain();
-            }
-        });
+
     }
 
     public void openActivityMain(){

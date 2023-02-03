@@ -7,17 +7,6 @@
     tools:context=".activityLogin">
 
     <ImageView
-        android:id="@+id/imageViewArrow2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:rotation="-90"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/up_arrow_svgrepo_com" />
-
-    <ImageView
         android:id="@+id/imageView"
         android:layout_width="251dp"
         android:layout_height="247dp"
@@ -46,22 +35,21 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="388dp"
-        android:text="Name: "
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"
+        android:text="E-mail:"
         android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         android:text="Password: "
         android:textColor="@color/black"
         android:textSize="18dp"
@@ -72,11 +60,13 @@
     <EditText
         android:id="@+id/editTextRegisterPassword"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="48dp"
         android:layout_marginStart="60dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="60dp"
         android:background="@drawable/custombuttonmain"
         android:ems="10"
+        android:hint="******************"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,11 +75,13 @@
     <EditText
         android:id="@+id/editTextRegisterName"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="48dp"
         android:layout_marginStart="60dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="60dp"
         android:background="@drawable/custombuttonmain"
         android:ems="10"
+        android:hint="example@gmail.com"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
