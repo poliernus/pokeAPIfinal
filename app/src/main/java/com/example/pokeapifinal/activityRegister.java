@@ -6,7 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,14 +31,9 @@ public class activityRegister extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activityRegister.this);
 
-
-        ImageView arrowBack = findViewById(R.id.imageBackArrowRegister);
-        arrowBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openActivityLogin();}
-        });
 
         Button buttonCreate = findViewById(R.id.buttonSignIn);
         buttonCreate.setOnClickListener(new View.OnClickListener() {
@@ -55,23 +55,27 @@ public class activityRegister extends AppCompatActivity {
             }
         });
 
+
         TextView textViewCreateAccount = findViewById(R.id.textViewCreateAccount);
         textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {openActivityLogin();}
         });
-
-
-        ImageView menu = findViewById(R.id.imageMenuRegister);
-        menu.setOnClickListener(new View.OnClickListener() {
+        ImageView imageViewArrow = findViewById(R.id.imageViewArrow);
+        imageViewArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                openActivityMain();
             }
         });
 
-    }
 
+
+    }
+    public void openActivityMain(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
     public void createAccount(String name, String password, SharedPreferences preferences){
         SharedPreferences.Editor editor = preferences.edit();

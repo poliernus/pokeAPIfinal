@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
     <ImageView
         android:id="@+id/imageViewPokeball"
@@ -16,23 +17,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pokeball" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/menu_svgrepo_com" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonSignIn"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="133dp"
         android:layout_height="58dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="475dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="436dp"
         android:background="@drawable/custombuttonmain"
         android:text="@string/buttonPokedex"
         android:textAllCaps="true"
@@ -40,8 +31,7 @@
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonTypes"

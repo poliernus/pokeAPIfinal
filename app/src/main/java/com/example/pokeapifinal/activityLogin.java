@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,11 +26,6 @@ public class activityLogin extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        ImageView arrowBack = findViewById(R.id.imageViewArrowBackLogin);
-        arrowBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openActivityMain();}
-        });
 
         TextView createAccount = findViewById(R.id.textViewCreateAccount);
         createAccount.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +48,13 @@ public class activityLogin extends AppCompatActivity {
                 }else{
                     Toast.makeText(activityLogin.this, "The name or password are wrong!!", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+        ImageView imageViewArrow = findViewById(R.id.imageViewArrow2);
+        imageViewArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivityMain();
             }
         });
     }
