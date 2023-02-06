@@ -1,92 +1,74 @@
 package com.example.pokeapifinal;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class activityRegister extends AppCompatActivity {
 
-    private static final String FILE_NAME = "users.txt";
-
-    private String name;
-    private String password;
-    private String passwordConfirm;
+    Button btnLogin;
+    EditText email, password;
+    FirebaseAuth firebaseAuth;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        firebaseAuth = FirebaseAuth.getInstance();
+        email = findViewById(R.id.editTextEmailRegister);
+        password = findViewById(R.id.editTextPasswordRegister);
+        btnLogin = findViewById(R.id.buttonRegister);
 
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activityRegister.this);
-
-
-        Button buttonCreate = findViewById(R.id.button3);
-        buttonCreate.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String emailUser = email.getText().toString().trim();
+                String passUser = password.getText().toString().trim();
 
-                EditText textName = findViewById(R.id.editTextEmailLogin);
-                name = String.valueOf(textName.getText());
-                EditText textViewPassword = findViewById(R.id.editTextPasswordLogin);
-                password = String.valueOf(textViewPassword.getText());
-                EditText textPasswordConfirm = findViewById(R.id.editTextRegisterPasswordConfirm);
-                passwordConfirm = String.valueOf(textPasswordConfirm.getText());
-
-                if(!checkConfirmPassword(password,passwordConfirm)){
-                    Toast.makeText(activityRegister.this,"The two passwords do not match!!", Toast.LENGTH_LONG).show();
-                }else{
-                    createAccount(name, password,preferences);
+                if(emailUser.isEmpty() || passUser.isEmpty()){
+                    Toast.makeText(activityRegister.this,"Rellena este campo",Toast.LENGTH_LONG).show();
                 }
+                firebaseAuth.createUserWithEmailAndPassword(emailUser, passUser)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(activityRegister.this, "User Created",
+                                            Toast.LENGTH_SHORT).show();
+                                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                                } else {
+                                    Toast.makeText(activityRegister.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
             }
         });
 
-
-        TextView textViewCreateAccount = findViewById(R.id.textViewCreateAccount);
-        textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openActivityLogin();}
-        });
-
-
-
-    }
-    public void openActivityMain(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
-    public void createAccount(String name, String password, SharedPreferences preferences){
-        SharedPreferences.Editor editor = preferences.edit();
+    private void loginUser(String emailUser, String passUser) {
 
-        editor.putString("my_name", name);
-        editor.apply();
-        editor.putString("my_password", password);
-        editor.apply();
-        Toast.makeText(activityRegister.this,"Account created!", Toast.LENGTH_LONG).show();
-
-
-    }
-
-
-    public boolean checkConfirmPassword(String password, String passwordConfirm){
-        if (password.equals(passwordConfirm)){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public void openActivityLogin(){
-        Intent intent = new Intent(this, activityLogin.class);
-        startActivity(intent);
     }
 }
