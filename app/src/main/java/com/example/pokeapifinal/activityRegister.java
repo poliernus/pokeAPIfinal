@@ -6,15 +6,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,9 +34,9 @@ public class activityRegister extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                EditText textName = findViewById(R.id.editTextRegisterName);
+                EditText textName = findViewById(R.id.editTextEmailLogin);
                 name = String.valueOf(textName.getText());
-                EditText textViewPassword = findViewById(R.id.editTextRegisterPassword);
+                EditText textViewPassword = findViewById(R.id.editTextPasswordLogin);
                 password = String.valueOf(textViewPassword.getText());
                 EditText textPasswordConfirm = findViewById(R.id.editTextRegisterPasswordConfirm);
                 passwordConfirm = String.valueOf(textPasswordConfirm.getText());
