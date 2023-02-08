@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openActivityLogin();
+                openActivityRegister();
             }
         });
 
@@ -48,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openActivityLogin(){
         Intent intent = new Intent(this, activityLogin.class);
+        startActivity(intent);
+    }
+
+    public void openActivityRegister(){
+        Intent intent = new Intent(this,activityRegister.class);
         startActivity(intent);
     }
 }
