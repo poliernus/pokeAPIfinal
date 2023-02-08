@@ -6,12 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +28,7 @@ public class activityRegister extends AppCompatActivity {
     EditText email, password;
     FirebaseAuth firebaseAuth;
     ImageView imageView;
+    TextView textView;
     int numColor = 1;
 
     @Override
@@ -37,6 +40,14 @@ public class activityRegister extends AppCompatActivity {
         password = findViewById(R.id.editTextPasswordRegister);
         btnLogin = findViewById(R.id.buttonRegister);
         imageView = findViewById(R.id.imageView);
+        textView = findViewById(R.id.textViewCreateAccount);
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityLogin();
+            }
+        });
         
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +86,11 @@ public class activityRegister extends AppCompatActivity {
         });
 
     }
+    public void openActivityLogin(){
+        Intent intent = new Intent(this, activityLogin.class);
+        startActivity(intent);
+    }
+
     private void colorChange(){
         if (numColor ==6){
             numColor = 1;
@@ -94,6 +110,7 @@ public class activityRegister extends AppCompatActivity {
                 break;
             case 5:
                 imageView.setColorFilter(activityRegister.this.getResources().getColor(R.color.teal_700));
+                Toast.makeText(this, "Toast",Toast.LENGTH_SHORT).show();
                 break;
         }
         numColor++;
