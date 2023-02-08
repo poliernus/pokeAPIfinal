@@ -6,15 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +25,8 @@ public class activityRegister extends AppCompatActivity {
     Button btnLogin;
     EditText email, password;
     FirebaseAuth firebaseAuth;
+    ImageView imageView;
+    int numColor = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +36,15 @@ public class activityRegister extends AppCompatActivity {
         email = findViewById(R.id.editTextEmailRegister);
         password = findViewById(R.id.editTextPasswordRegister);
         btnLogin = findViewById(R.id.buttonRegister);
+        imageView = findViewById(R.id.imageView);
+        
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorChange();
+            }
+        });
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +74,29 @@ public class activityRegister extends AppCompatActivity {
             }
         });
 
+    }
+    private void colorChange(){
+        if (numColor ==6){
+            numColor = 1;
+        }
+        switch (numColor){
+            case 1:
+                imageView.setColorFilter(activityRegister.this.getResources().getColor(R.color.purple_200));
+                break;
+            case 2:
+                imageView.setColorFilter(activityRegister.this.getResources().getColor(R.color.purple_500));
+                break;
+            case 3:
+                imageView.setColorFilter(activityRegister.this.getResources().getColor(R.color.purple_700));
+                break;
+            case 4:
+                imageView.setColorFilter(activityRegister.this.getResources().getColor(R.color.teal_200));
+                break;
+            case 5:
+                imageView.setColorFilter(activityRegister.this.getResources().getColor(R.color.teal_700));
+                break;
+        }
+        numColor++;
     }
 
     private void loginUser(String emailUser, String passUser) {
