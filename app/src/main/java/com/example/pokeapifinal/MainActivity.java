@@ -16,10 +16,12 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private Button loginButton;
-
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openActivityRegister();
+                openActivityLogin();
             }
         });
 
@@ -51,10 +53,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openActivityRegister(){
-        Intent intent = new Intent(this,activityRegister.class);
-        startActivity(intent);
-    }
 //    @Override
 //    public void onTokenRefresh() {
 //        // Get updated InstanceID token.

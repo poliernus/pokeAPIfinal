@@ -1,5 +1,6 @@
 package com.example.pokeapifinal;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class activityLogin extends AppCompatActivity {
 
@@ -28,7 +33,6 @@ public class activityLogin extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         email = findViewById(R.id.editTextEmailRegister);
         password = findViewById(R.id.editTextPasswordRegister);
         btnLogin = findViewById(R.id.buttonLogin);
@@ -49,10 +53,28 @@ public class activityLogin extends AppCompatActivity {
 
                 if(emailUser.isEmpty() || passUser.isEmpty()){
                     Toast.makeText(activityLogin.this,"Rellena este campo",Toast.LENGTH_LONG).show();
-                }else {
-                    loginUser(emailUser,passUser);
                 }
-            }
+                firebaseAuth.signInWithEmailAndPassword(emailUser,passUser)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(getApplicationContext(),"Login Succesful", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+
+                                }else {
+                                    Toast.makeText(activityLogin.this, "Authentication failed",
+                                            Toast.LENGTH_LONG).show();
+                                }
+
+                            }
+
+                        });
+
+                }
+
         });
         imageView = findViewById(R.id.imageView);
 
@@ -70,9 +92,6 @@ public class activityLogin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void loginUser(String emailUser, String passUser) {
-
-    }
     private void colorChange(){
         if (numColor ==6){
             numColor = 1;
