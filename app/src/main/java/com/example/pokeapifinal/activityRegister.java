@@ -25,11 +25,22 @@ import com.google.firebase.auth.FirebaseUser;
 public class activityRegister extends AppCompatActivity {
 
     Button btnLogin;
-    EditText email, password;
+    EditText email, password,passwordconfirm;
     FirebaseAuth firebaseAuth;
     ImageView imageView;
     TextView textView;
     int numColor = 1;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        if (currentUser != null){
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +49,7 @@ public class activityRegister extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.editTextEmailRegister);
         password = findViewById(R.id.editTextPasswordRegister);
+        passwordconfirm = findViewById(R.id.editTextRegisterPasswordConfirm);
         btnLogin = findViewById(R.id.buttonRegister);
         imageView = findViewById(R.id.imageView);
         textView = findViewById(R.id.textViewCreateAccount);
@@ -63,9 +75,11 @@ public class activityRegister extends AppCompatActivity {
                 String emailUser = email.getText().toString().trim();
                 String passUser = password.getText().toString().trim();
 
+
                 if(emailUser.isEmpty() || passUser.isEmpty()){
                     Toast.makeText(activityRegister.this,"Rellena este campo",Toast.LENGTH_LONG).show();
                 }
+
                 firebaseAuth.createUserWithEmailAndPassword(emailUser, passUser)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -115,9 +129,5 @@ public class activityRegister extends AppCompatActivity {
                 break;
         }
         numColor++;
-    }
-
-    private void loginUser(String emailUser, String passUser) {
-
     }
 }
