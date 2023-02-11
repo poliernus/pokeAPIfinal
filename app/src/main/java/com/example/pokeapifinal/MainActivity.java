@@ -11,24 +11,15 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
+import com.example.pokeapifinal.FMCSend;
 
 public class MainActivity extends AppCompatActivity {
     private Button loginButton;
@@ -62,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openActivityLogin();
+                openActivityRegister();
             }
         });
 
@@ -71,8 +62,12 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "text", Toast.LENGTH_SHORT).show();
-
+                FMCSend.pushNotification(
+                        MainActivity.this,
+                        "dP5Z7gUiRKqQz7ihYwJVY6:APA91bHgmZs43mfSZ5MLnQ_6cIhria-89R-SNHxMXO6gCIIA_mXqnelguks-nJ4CtD5BY3KB6DXZTkDWlvCx8mfBtRkmN2SvurynRTLRJQMDEHtCWk9-f8gB-MqNDUxuPoA7q9-Jc3VTdP5Z7gUiRKqQz7ihYwJVY6:APA91bHgmZs43mfSZ5MLnQ_6cIhria-89R-SNHxMXO6gCIIA_mXqnelguks-nJ4CtD5BY3KB6DXZTkDWlvCx8mfBtRkmN2SvurynRTLRJQMDEHtCWk9-f8gB-MqNDUxuPoA7q9-Jc3VT",
+                        "hola",
+                        "body"
+                );
             }
         });
         FirebaseMessaging.getInstance().getToken()
@@ -84,11 +79,10 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }
                         String token = task.getResult();
-                        System.out.printf("Token: "+token);
+                        System.out.println("Token: "+token+"  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     }
                 });
     }
-
 
     public void openActivityLogin(){
         Intent intent = new Intent(this, activityLogin.class);
