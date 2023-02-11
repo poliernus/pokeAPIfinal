@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }
                         String token = task.getResult();
-                        System.out.printf("Token: "+token);
+                        System.out.println("TOKEN: "+token);
                     }
                 });
     }
