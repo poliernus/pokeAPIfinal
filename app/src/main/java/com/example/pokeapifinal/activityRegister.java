@@ -74,14 +74,12 @@ public class activityRegister extends AppCompatActivity {
             public void onClick(View view) {
                 String emailUser = email.getText().toString().trim();
                 String passUser = password.getText().toString().trim();
-                String passUserConfirm = passwordconfirm.getText().toString().trim();
 
-                if(emailUser.isEmpty() || passUser.isEmpty() || passUserConfirm.isEmpty()){
+
+                if(emailUser.isEmpty() || passUser.isEmpty()){
                     Toast.makeText(activityRegister.this,"Rellena este campo",Toast.LENGTH_LONG).show();
                 }
-                if(passUserConfirm != passUser){
-                    Toast.makeText(activityRegister.this, "Las contraseñas no coinciden",Toast.LENGTH_LONG).show();
-                }
+
                 firebaseAuth.createUserWithEmailAndPassword(emailUser, passUser)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -130,9 +128,5 @@ public class activityRegister extends AppCompatActivity {
                 break;
         }
         numColor++;
-    }
-
-    private void loginUser(String emailUser, String passUser) {
-
     }
 }
