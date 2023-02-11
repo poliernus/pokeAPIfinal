@@ -76,6 +76,7 @@ public class activityRegister extends AppCompatActivity {
                                             Toast.LENGTH_SHORT).show();
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
                                 } else {
+                                    System.out.println("noooooooooo");
                                     Toast.makeText(activityRegister.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                 }

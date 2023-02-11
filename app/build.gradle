@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.example.pokeapifinal'
-    compileSdk 33
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.example.pokeapifinal"
