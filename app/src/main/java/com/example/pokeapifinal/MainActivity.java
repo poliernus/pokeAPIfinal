@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user.getEmail();
 
         setContentView(R.layout.activity_main);
         loginButton = (Button) findViewById(R.id.button2);
@@ -78,10 +77,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 openActivityLogin();
             }
-
         });
 
-
+        //Floating button y su listener
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
 
     public void openActivityLogin(){
         Intent intent = new Intent(this, activityLogin.class);
