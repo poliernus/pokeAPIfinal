@@ -13,6 +13,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +26,8 @@ import com.google.firebase.storage.StorageReference;
 
 public class MainActivity extends AppCompatActivity {
     private Button loginButton;
+    TextView textView;
+
 
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
@@ -50,12 +54,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
         loginButton = (Button) findViewById(R.id.button2);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openActivityRegister();
+                openActivityLogin();
             }
         });
 
@@ -81,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }
                         String token = task.getResult();
-
                         System.out.println("TOKEN: "+token);
                     }
                 });
