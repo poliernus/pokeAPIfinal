@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.example.pokeapifinal.FMCSend;
+import com.google.firebase.storage.StorageReference;
 
 public class MainActivity extends AppCompatActivity {
     private Button loginButton;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
         loginButton = (Button) findViewById(R.id.button2);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 FMCSend.pushNotification(
                         MainActivity.this,
-                        "dP5Z7gUiRKqQz7ihYwJVY6:APA91bHgmZs43mfSZ5MLnQ_6cIhria-89R-SNHxMXO6gCIIA_mXqnelguks-nJ4CtD5BY3KB6DXZTkDWlvCx8mfBtRkmN2SvurynRTLRJQMDEHtCWk9-f8gB-MqNDUxuPoA7q9-Jc3VTdP5Z7gUiRKqQz7ihYwJVY6:APA91bHgmZs43mfSZ5MLnQ_6cIhria-89R-SNHxMXO6gCIIA_mXqnelguks-nJ4CtD5BY3KB6DXZTkDWlvCx8mfBtRkmN2SvurynRTLRJQMDEHtCWk9-f8gB-MqNDUxuPoA7q9-Jc3VT",
+                        "dP5Z7gUiRKqQz7ihYwJVY6:APA91bHgmZs43mfSZ5MLnQ_6cIhria-89R-SNHxMXO6gCIIA_mXqnelguks-nJ4CtD5BY3KB6DXZTkDWlvCx8mfBtRkmN2SvurynRTLRJQMDEHtCWk9-f8gB-MqNDUxuPoA7q9-Jc3VT",
                         "hola",
                         "body"
                 );
@@ -79,11 +81,8 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }
                         String token = task.getResult();
-<<<<<<< HEAD
-                        System.out.println("Token: "+token+"  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-=======
+
                         System.out.println("TOKEN: "+token);
->>>>>>> dc63e7965a183662be42873cbe8003e3ac91f749
                     }
                 });
     }
