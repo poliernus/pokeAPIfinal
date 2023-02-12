@@ -4,13 +4,13 @@ import android.content.Context;
 import android.os.StrictMode;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.android.volley.RequestQueue;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class FMCSend {
     private static String BASE_URL = "https://fcm.googleapis.com/fcm/send";
-    private static String SERVER_KEY = "AAAAHZZ0wdM:APA91bGGDGtVrePiFBzsw_rNVDnRW0VK-V7yhaKdyLUmVYULVy8W1Kpr3vMfUlh1JK7ExyoOsaph5r_XPUXd0w9kPBOB3YIfmrEdtFiSNHhvmW-DAoH0r8NAvLUsMwhXrnlHDs3tgkSO";
+    private static String SERVER_KEY = "key=AAAAHZZ0wdM:APA91bGGDGtVrePiFBzsw_rNVDnRW0VK-V7yhaKdyLUmVYULVy8W1Kpr3vMfUlh1JK7ExyoOsaph5r_XPUXd0w9kPBOB3YIfmrEdtFiSNHhvmW-DAoH0r8NAvLUsMwhXrnlHDs3tgkSO";
 
     public static void pushNotification(Context context, String token, String title, String message){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
