@@ -32,27 +32,18 @@ public class activityRegister extends AppCompatActivity {
     int numColor = 1;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        if (currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
-
-    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         firebaseAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.editTextEmailRegister);
         password = findViewById(R.id.editTextPasswordRegister);
-        passwordconfirm = findViewById(R.id.editTextRegisterPasswordConfirm);
         btnLogin = findViewById(R.id.buttonRegister);
         imageView = findViewById(R.id.imageView);
         textView = findViewById(R.id.textViewCreateAccount);
+        passwordconfirm = findViewById(R.id.editTextRegisterPasswordConfirm);
+
+
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,27 +65,32 @@ public class activityRegister extends AppCompatActivity {
             public void onClick(View view) {
                 String emailUser = email.getText().toString().trim();
                 String passUser = password.getText().toString().trim();
+                String passConfirm = passwordconfirm.getText().toString().trim();
 
 
-                if(emailUser.isEmpty() || passUser.isEmpty()){
+                if(emailUser.isEmpty() || passUser.isEmpty() || passConfirm.isEmpty()){
                     Toast.makeText(activityRegister.this,"Rellena este campo",Toast.LENGTH_LONG).show();
                 }
+                if(passConfirm.equals(passUser)) {
 
-                firebaseAuth.createUserWithEmailAndPassword(emailUser, passUser)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                    firebaseAuth.createUserWithEmailAndPassword(emailUser, passUser)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(activityRegister.this, "User Created",
-                                            Toast.LENGTH_SHORT).show();
-                                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                                } else {
-                                    Toast.makeText(activityRegister.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(activityRegister.this, "User Created",
+                                                Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(activityRegister.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }else {
+                    Toast.makeText(activityRegister.this, "Las constraseñas no coinciden",
+                            Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

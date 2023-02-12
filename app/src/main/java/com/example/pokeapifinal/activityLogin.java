@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,16 +15,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Locale;
+
 public class activityLogin extends AppCompatActivity {
 
+    FirebaseAuth mAuth;
     Button btnLogin;
     EditText email, password;
-    FirebaseAuth firebaseAuth;
     TextView textViewCreateAccount;
     ImageView imageView;
     int numColor = 1;
@@ -37,6 +41,15 @@ public class activityLogin extends AppCompatActivity {
         password = findViewById(R.id.editTextPasswordRegister);
         btnLogin = findViewById(R.id.buttonLogin);
         textViewCreateAccount = findViewById(R.id.textViewCreateAccount);
+        imageView = findViewById(R.id.imageView);
+        mAuth = FirebaseAuth.getInstance();
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorChange();
+            }
+        });
 
         textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,43 +60,18 @@ public class activityLogin extends AppCompatActivity {
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 String emailUser = email.getText().toString().trim();
                 String passUser = password.getText().toString().trim();
 
                 if(emailUser.isEmpty() || passUser.isEmpty()){
-                    Toast.makeText(activityLogin.this,"Rellena este campo",Toast.LENGTH_LONG).show();
-                }
-                firebaseAuth.signInWithEmailAndPassword(emailUser,passUser)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()){
-                                    Toast.makeText(getApplicationContext(),"Login Succesful", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }else {
-                                    Toast.makeText(activityLogin.this, "Authentication failed",
-                                            Toast.LENGTH_LONG).show();
-                                }
-
-                            }
-
-                        });
+                    Toast.makeText(activityLogin.this, "Ingresa los datos restantes", Toast.LENGTH_LONG).show();
+                }else{
+                    loginUser(emailUser,passUser);
 
                 }
-
-        });
-        imageView = findViewById(R.id.imageView);
-
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                colorChange();
             }
         });
-
     }
 
     public void openActivityRegister(){
@@ -116,4 +104,25 @@ public class activityLogin extends AppCompatActivity {
         numColor++;
     }
 
+    private void loginUser(String emailUser, String passUser){
+        mAuth.signInWithEmailAndPassword(emailUser,passUser).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    finish();
+                    startActivity(new Intent(activityLogin.this,MainActivity.class));
+                    Toast.makeText(activityLogin.this, "Bienvenido", Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(activityLogin.this, "Error", Toast.LENGTH_LONG).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(activityLogin.this, "Error al logearse", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 }
+
